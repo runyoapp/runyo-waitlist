@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Privacybeleid — runyo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F1EEE6; --ink: #0E1F1A; --ink2: #5E6F69; --mute: #86968F;
+      --accent: #00B98E; --line: #DEDACA; --paper: #FBF7EC;
+      --sw: 'Sora', system-ui, sans-serif; --mw: 'JetBrains Mono', monospace;
+    }
+    html, body { background: var(--bg); color: var(--ink); font-family: var(--sw); min-height: 100dvh; -webkit-font-smoothing: antialiased; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 28px 60px; }
+    .logo { font-size: 22px; font-weight: 700; letter-spacing: -0.035em; color: var(--ink); text-decoration: none; }
+    main { max-width: 720px; margin: 0 auto; padding: 40px 60px 80px; }
+    .page-label { font-size: 11px; font-family: var(--mw); font-weight: 600; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; }
+    h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 8px; }
+    .updated { font-size: 12px; font-family: var(--mw); color: var(--mute); margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 600; margin-top: 36px; margin-bottom: 10px; letter-spacing: -0.01em; }
+    p { font-size: 15px; color: var(--ink2); line-height: 1.65; margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    ul li { font-size: 15px; color: var(--ink2); line-height: 1.65; margin-bottom: 6px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { padding: 20px 60px 32px; font-size: 11px; font-family: var(--mw); color: var(--mute); letter-spacing: 0.04em; border-top: 1px solid var(--line); display: flex; justify-content: space-between; }
+    @media (max-width: 768px) {
+      nav { padding: 24px 28px; }
+      main { padding: 32px 28px 60px; }
+      h1 { font-size: 26px; }
+      footer { padding: 16px 28px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/">runyo</a>
+</nav>
+
+<main>
+  <div class="page-label">Juridisch</div>
+  <h1>Privacybeleid</h1>
+  <div class="updated">Laatst bijgewerkt: mei 2026</div>
+
+  <p>runyo respecteert jouw privacy. Dit privacybeleid legt uit welke gegevens we verzamelen, waarom, en hoe we ermee omgaan. We houden het kort en duidelijk.</p>
+
+  <h2>1. Wie zijn wij</h2>
+  <p>runyo is een persoonlijke trainingsapp voor hardlopers, ontwikkeld vanuit Utrecht, Nederland. Vragen over dit beleid? Stuur een mail naar <a href="mailto:info@runyo.app">info@runyo.app</a>.</p>
+
+  <h2>2. Welke gegevens verzamelen we</h2>
+  <p>We verzamelen alleen wat nodig is om de app te laten werken:</p>
+  <ul>
+    <li><strong>E-mailadres</strong> — via de waitlist, zodat we je kunnen informeren als runyo live gaat.</li>
+    <li><strong>Google-accountgegevens</strong> — naam en e-mailadres via Google OAuth, zodat je kunt inloggen in de app. We slaan geen wachtwoorden op.</li>
+    <li><strong>Google Sheets data</strong> — jouw trainingsschema, dat je zelf koppelt. We lezen dit alleen om de app te laten werken en slaan het niet op onze servers op.</li>
+    <li><strong>Notificatie-instellingen</strong> — tijden en voorkeuren voor Telegram-notificaties, zodat de bot weet wanneer hij je een bericht stuurt.</li>
+  </ul>
+
+  <h2>3. Waarvoor gebruiken we jouw gegevens</h2>
+  <ul>
+    <li>Om je te informeren als runyo publiek beschikbaar is (waitlist).</li>
+    <li>Om je toegang te geven tot de app via Google OAuth.</li>
+    <li>Om dagelijkse trainingsnotificaties via Telegram te sturen, als je dat instelt.</li>
+    <li>We verkopen geen data aan derden. We gebruiken jouw gegevens niet voor advertenties.</li>
+  </ul>
+
+  <h2>4. Hoe lang bewaren we jouw gegevens</h2>
+  <ul>
+    <li><strong>Waitlist e-mailadressen</strong> worden bewaard totdat runyo live gaat en we iedereen hebben geïnformeerd, of zodra je je uitschrijft.</li>
+    <li><strong>App-instellingen</strong> worden bewaard zolang je een account hebt. Je kunt op elk moment je gegevens verwijderen door contact op te nemen via <a href="mailto:info@runyo.app">info@runyo.app</a>.</li>
+  </ul>
+
+  <h2>5. Scopes die we via Google OAuth gebruiken</h2>
+  <p>Bij het inloggen met Google vragen we toegang tot:</p>
+  <ul>
+    <li><strong>Basisprofielgegevens</strong> (naam, e-mailadres) — voor identificatie.</li>
+    <li><strong>Google Spreadsheets</strong> — om jouw trainingsschema te lezen en bij te werken.</li>
+    <li><strong>Google Drive (beperkt)</strong> — alleen voor bestanden die de app zelf aanmaakt, en voor het opslaan van je instellingen in een afgeschermd mapje (appDataFolder).</li>
+  </ul>
+  <p>We vragen nooit meer toegang dan nodig is voor de werking van de app.</p>
+
+  <h2>6. Jouw rechten (AVG)</h2>
+  <p>Je hebt het recht om:</p>
+  <ul>
+    <li>Inzage te vragen in de gegevens die we over je bewaren.</li>
+    <li>Onjuiste gegevens te laten corrigeren.</li>
+    <li>Jouw gegevens te laten verwijderen.</li>
+    <li>Bezwaar te maken tegen verwerking.</li>
+  </ul>
+  <p>Stuur een mail naar <a href="mailto:info@runyo.app">info@runyo.app</a> en we reageren binnen 30 dagen.</p>
+
+  <h2>7. Cookies en tracking</h2>
+  <p>runyo gebruikt geen tracking cookies, geen advertentienetwerken en geen analysediensten van derden die jouw gedrag volgen.</p>
+
+  <h2>8. Wijzigingen</h2>
+  <p>Als we dit beleid wijzigen, updaten we de datum bovenaan deze pagina. Bij ingrijpende wijzigingen informeren we je per e-mail.</p>
+</main>
+
+<footer>
+  <span>runyo. utrecht. 2026</span>
+  <a href="/">← terug naar runyo</a>
+</footer>
+
+</body>
+</html>
