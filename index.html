@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>runyo — jouw schema. eindelijk levend.</title>
-  <meta name="description" content="Importeer je Excel of PDF. runyo leest je schema en stuurt je elke ochtend wat er op het programma staat.">
-  <meta property="og:title" content="runyo — jouw hardloopschema, levend.">
-  <meta property="og:description" content="Excel, pdf, foto, of van je coach. Maakt niet uit. Eerste 200 testers krijgen vroege toegang.">
+  <meta name="description" content="Importeer jouw hardloopschema en breng het tot leven!">
+  <meta property="og:title" content="runyo — schema's die meelopen">
+  <meta property="og:description" content="Excel, pdf, foto, of van je coach. Maakt niet uit. De wachtlijst voor het startschot is geopend.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -166,7 +166,7 @@
       color: var(--accent-ink);
       border: none;
       border-radius: 999px;
-      padding: 10px 18px;
+      padding: 12px 18px;
       font-family: var(--sw);
       font-weight: 600;
       font-size: 14px;
@@ -174,6 +174,7 @@
       white-space: nowrap;
       cursor: pointer;
       transition: opacity 0.12s;
+      flex-shrink: 0;
     }
     .form-pill button:hover { opacity: 0.9; }
     .form-pill button:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -333,22 +334,30 @@
       border-top: 1px solid var(--line);
     }
 
+    /* ── ERROR MSG ── */
+    .error-msg {
+      display: none;
+      font-size: 12px;
+      color: #ff6b6b;
+      margin-top: 10px;
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav { padding: 24px 28px; }
-      .nav-right .how-link { display: none; }
+      .nav-right { display: none; }
 
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 16px 28px 48px;
-      }
+      /* reorder: hero-left → how-section → signup card */
+      main { display: flex; flex-direction: column; }
+      .hero { display: contents; }
+      .hero-left { order: 1; padding: 16px 28px 0; }
+      .hero-right { order: 3; padding: 0 28px 48px; }
+      .how-section { order: 2; padding: 24px 28px 32px; }
+
       .hero-sub { font-size: 22px; margin-top: 22px; }
       .signup-card { padding: 22px; border-radius: 16px; }
       .signup-heading { font-size: 20px; }
       .signup-body { font-size: 13px; margin-bottom: 16px; }
-
-      .how-section { padding: 0 28px 48px; }
 
       .step-cards {
         grid-template-columns: 1fr;
@@ -358,7 +367,6 @@
       .step-card { min-height: auto; padding: 14px; }
       .schema-lines { display: none; }
       .week-bars .week-bar { height: 8px; }
-      .today-card { display: none; }
       .step-spacer { display: none; }
 
       footer {
@@ -372,9 +380,6 @@
 
 <nav>
   <div class="logo">runyo</div>
-  <div class="nav-right">
-    <span class="how-link"></span>
-  </div>
 </nav>
 
 <main>
@@ -398,13 +403,13 @@
         </div>
         <form id="waitlistForm">
           <div class="form-pill">
-            <input type="email" name="email" placeholder="naam@email.com" required autocomplete="email">
+            <input type="email" inputmode="email" name="email" placeholder="naam@email.com" required autocomplete="email">
             <button type="submit">Zet me op de lijst</button>
           </div>
         </form>
         <div class="success-msg" id="successMsg">✓ &nbsp;Nice, je staat op de lijst! We zullen je op de hoogte houden.</div>
-        <div class="signup-note">
-        </div>
+        <div class="error-msg" id="errorMsg">Er ging iets mis. Probeer het opnieuw.</div>
+        <div class="signup-note">Geen spam. Alleen een seintje als we live gaan.</div>
       </div>
     </div>
   </section>
@@ -487,12 +492,14 @@
 </main>
 
 <footer>
-  <span>RUNYO. UTRECHT. 2026</span>
+  <span>runyo. utrecht. 2026</span>
+  <span><a href="/privacy" style="color:var(--mute);text-decoration:none;">privacybeleid</a></span>
 </footer>
 
 <script>
   const form = document.getElementById('waitlistForm');
   const successMsg = document.getElementById('successMsg');
+  const errorMsg = document.getElementById('errorMsg');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -500,6 +507,7 @@
     const email = form.querySelector('input[name="email"]').value;
     btn.disabled = true;
     btn.textContent = 'bezig...';
+    errorMsg.style.display = 'none';
     try {
       const res = await fetch('https://formspree.io/f/xaqvjzna', {
         method: 'POST',
@@ -514,7 +522,7 @@
     } catch {
       btn.disabled = false;
       btn.textContent = 'Zet me op de lijst';
-      alert('Er ging iets mis. Probeer het opnieuw.');
+      errorMsg.style.display = 'block';
     }
   });
 </script>
