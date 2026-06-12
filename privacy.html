@@ -262,7 +262,7 @@
   };
 
   const SUPPORTED = ['nl', 'en', 'es'];
-  const DEFAULT_LANG = 'nl';
+  const DEFAULT_LANG = 'en';
 
   function applyLang(lang) {
     const dict = translations[lang];
@@ -284,7 +284,7 @@
     const stored = localStorage.getItem('runyo-lang');
     if (stored && SUPPORTED.includes(stored)) return stored;
     const browser = (navigator.language || '').slice(0, 2).toLowerCase();
-    if (browser === 'es' || browser === 'en') return browser;
+    if (SUPPORTED.includes(browser)) return browser;
     return DEFAULT_LANG;
   }
 
