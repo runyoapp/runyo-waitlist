@@ -3,20 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Privacybeleid — runyo</title>
+  <title data-i18n="meta.title">Privacybeleid - runyo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #F1EEE6; --ink: #0E1F1A; --ink2: #5E6F69; --mute: #86968F;
+      --bg: #F1EEE6; --surface: #EAEFEC; --ink: #0E1F1A; --ink2: #5E6F69; --mute: #86968F;
       --accent: #00B98E; --line: #DEDACA; --paper: #FBF7EC;
       --sw: 'Sora', system-ui, sans-serif; --mw: 'JetBrains Mono', monospace;
     }
     html, body { background: var(--bg); color: var(--ink); font-family: var(--sw); min-height: 100dvh; -webkit-font-smoothing: antialiased; }
     nav { display: flex; justify-content: space-between; align-items: center; padding: 28px 60px; }
     .logo { font-size: 22px; font-weight: 700; letter-spacing: -0.035em; color: var(--ink); text-decoration: none; }
+    .lang-switch { display: flex; gap: 4px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+    .lang-btn { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 22px; border: none; background: transparent; border-radius: 999px; cursor: pointer; padding: 0; opacity: 0.45; transition: opacity 0.12s, background 0.12s; }
+    .lang-btn:hover { opacity: 0.8; }
+    .lang-btn.active { opacity: 1; background: var(--paper); box-shadow: 0 1px 3px rgba(14,31,26,0.12); }
+    .lang-btn svg { width: 20px; height: 14px; border-radius: 2px; display: block; }
     main { max-width: 720px; margin: 0 auto; padding: 40px 60px 80px; }
     .page-label { font-size: 11px; font-family: var(--mw); font-weight: 600; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; }
     h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 8px; }
@@ -40,71 +45,255 @@
 
 <nav>
   <a class="logo" href="/">runyo</a>
+  <div class="lang-switch" role="group" aria-label="Language">
+    <button class="lang-btn" data-lang="nl" aria-label="Nederlands" title="Nederlands">
+      <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+        <rect width="60" height="30" fill="#21468B"/>
+        <rect width="60" height="20" fill="#fff"/>
+        <rect width="60" height="10" fill="#AE1C28"/>
+      </svg>
+    </button>
+    <button class="lang-btn" data-lang="en" aria-label="English" title="English">
+      <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+        <clipPath id="gb-clip"><rect width="60" height="30"/></clipPath>
+        <g clip-path="url(#gb-clip)">
+          <rect width="60" height="30" fill="#012169"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4" clip-path="url(#gb-clip)"/>
+          <path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/>
+          <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/>
+        </g>
+      </svg>
+    </button>
+    <button class="lang-btn" data-lang="es" aria-label="Español" title="Español">
+      <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+        <rect width="60" height="30" fill="#AA151B"/>
+        <rect width="60" height="15" y="7.5" fill="#F1BF00"/>
+      </svg>
+    </button>
+  </div>
 </nav>
 
 <main>
-  <div class="page-label">Juridisch</div>
-  <h1>Privacybeleid</h1>
-  <div class="updated">Laatst bijgewerkt: mei 2026</div>
+  <div class="page-label" data-i18n="label">Legal</div>
+  <h1 data-i18n="h1">Privacy Policy</h1>
+  <div class="updated" data-i18n="updated">Last updated: May 2026</div>
 
-  <p>runyo respecteert jouw privacy. Dit privacybeleid legt uit welke gegevens we verzamelen, waarom, en hoe we ermee omgaan. We houden het kort en duidelijk.</p>
+  <p data-i18n="intro">runyo respects your privacy. This privacy policy explains what data we collect, why, and how we handle it. We keep it short and clear.</p>
 
-  <h2>1. Wie zijn wij</h2>
-  <p>runyo is een persoonlijke trainingsapp voor hardlopers, ontwikkeld vanuit Utrecht, Nederland. Vragen over dit beleid? Stuur een mail naar <a href="mailto:info@runyo.app">info@runyo.app</a>.</p>
+  <h2 data-i18n="s1.h">1. Who we are</h2>
+  <p data-i18n="s1.p">runyo is a personal training app for runners, built in Utrecht, the Netherlands. Questions about this policy? Email us at <a href="mailto:info@runyo.app">info@runyo.app</a>.</p>
 
-  <h2>2. Welke gegevens verzamelen we</h2>
-  <p>We verzamelen alleen wat nodig is om de app te laten werken:</p>
+  <h2 data-i18n="s2.h">2. What data we collect</h2>
+  <p data-i18n="s2.p">We only collect what is needed to make the app work:</p>
   <ul>
-    <li><strong>E-mailadres</strong> — via de waitlist, zodat we je kunnen informeren als runyo live gaat.</li>
-    <li><strong>Google-accountgegevens</strong> — naam en e-mailadres via Google OAuth, zodat je kunt inloggen in de app. We slaan geen wachtwoorden op.</li>
-    <li><strong>Google Sheets data</strong> — jouw trainingsschema, dat je zelf koppelt. We lezen dit alleen om de app te laten werken en slaan het niet op onze servers op.</li>
-    <li><strong>Notificatie-instellingen</strong> — tijden en voorkeuren voor Telegram-notificaties, zodat de bot weet wanneer hij je een bericht stuurt.</li>
+    <li data-i18n="s2.li1"><strong>Email address</strong> - via the waitlist, so we can let you know when runyo goes live.</li>
+    <li data-i18n="s2.li2"><strong>Google account details</strong> - name and email address via Google OAuth, so you can sign in to the app. We do not store passwords.</li>
+    <li data-i18n="s2.li3"><strong>Google Sheets data</strong> - your training plan, which you connect yourself. We only read it to make the app work and do not store it on our servers.</li>
+    <li data-i18n="s2.li4"><strong>Notification settings</strong> - times and preferences for Telegram notifications, so the bot knows when to send you a message.</li>
   </ul>
 
-  <h2>3. Waarvoor gebruiken we jouw gegevens</h2>
+  <h2 data-i18n="s3.h">3. What we use your data for</h2>
   <ul>
-    <li>Om je te informeren als runyo publiek beschikbaar is (waitlist).</li>
-    <li>Om je toegang te geven tot de app via Google OAuth.</li>
-    <li>Om dagelijkse trainingsnotificaties via Telegram te sturen, als je dat instelt.</li>
-    <li>We verkopen geen data aan derden. We gebruiken jouw gegevens niet voor advertenties.</li>
+    <li data-i18n="s3.li1">To let you know when runyo is publicly available (waitlist).</li>
+    <li data-i18n="s3.li2">To give you access to the app via Google OAuth.</li>
+    <li data-i18n="s3.li3">To send daily training notifications via Telegram, if you set that up.</li>
+    <li data-i18n="s3.li4">We do not sell data to third parties. We do not use your data for advertising.</li>
   </ul>
 
-  <h2>4. Hoe lang bewaren we jouw gegevens</h2>
+  <h2 data-i18n="s4.h">4. How long we keep your data</h2>
   <ul>
-    <li><strong>Waitlist e-mailadressen</strong> worden bewaard totdat runyo live gaat en we iedereen hebben geïnformeerd, of zodra je je uitschrijft.</li>
-    <li><strong>App-instellingen</strong> worden bewaard zolang je een account hebt. Je kunt op elk moment je gegevens verwijderen door contact op te nemen via <a href="mailto:info@runyo.app">info@runyo.app</a>.</li>
+    <li data-i18n="s4.li1"><strong>Waitlist email addresses</strong> are kept until runyo goes live and we have informed everyone, or as soon as you unsubscribe.</li>
+    <li data-i18n="s4.li2"><strong>App settings</strong> are kept as long as you have an account. You can delete your data at any time by contacting us at <a href="mailto:info@runyo.app">info@runyo.app</a>.</li>
   </ul>
 
-  <h2>5. Scopes die we via Google OAuth gebruiken</h2>
-  <p>Bij het inloggen met Google vragen we toegang tot:</p>
+  <h2 data-i18n="s5.h">5. Scopes we use via Google OAuth</h2>
+  <p data-i18n="s5.p1">When you sign in with Google, we request access to:</p>
   <ul>
-    <li><strong>Basisprofielgegevens</strong> (naam, e-mailadres) — voor identificatie.</li>
-    <li><strong>Google Spreadsheets</strong> — om jouw trainingsschema te lezen en bij te werken.</li>
-    <li><strong>Google Drive (beperkt)</strong> — alleen voor bestanden die de app zelf aanmaakt, en voor het opslaan van je instellingen in een afgeschermd mapje (appDataFolder).</li>
+    <li data-i18n="s5.li1"><strong>Basic profile details</strong> (name, email address) - for identification.</li>
+    <li data-i18n="s5.li2"><strong>Google Spreadsheets</strong> - to read and update your training plan.</li>
   </ul>
-  <p>We vragen nooit meer toegang dan nodig is voor de werking van de app.</p>
+  <p data-i18n="s5.p2">We never request more access than is needed for the app to work.</p>
 
-  <h2>6. Jouw rechten (AVG)</h2>
-  <p>Je hebt het recht om:</p>
+  <h2 data-i18n="s6.h">6. Your rights (GDPR)</h2>
+  <p data-i18n="s6.p1">You have the right to:</p>
   <ul>
-    <li>Inzage te vragen in de gegevens die we over je bewaren.</li>
-    <li>Onjuiste gegevens te laten corrigeren.</li>
-    <li>Jouw gegevens te laten verwijderen.</li>
-    <li>Bezwaar te maken tegen verwerking.</li>
+    <li data-i18n="s6.li1">Request access to the data we keep about you.</li>
+    <li data-i18n="s6.li2">Have incorrect data corrected.</li>
+    <li data-i18n="s6.li3">Have your data deleted.</li>
+    <li data-i18n="s6.li4">Object to processing.</li>
   </ul>
-  <p>Stuur een mail naar <a href="mailto:info@runyo.app">info@runyo.app</a> en we reageren binnen 30 dagen.</p>
+  <p data-i18n="s6.p2">Email us at <a href="mailto:info@runyo.app">info@runyo.app</a> and we will respond within 30 days.</p>
 
-  <h2>7. Cookies en tracking</h2>
-  <p>runyo gebruikt geen tracking cookies, geen advertentienetwerken en geen analysediensten van derden die jouw gedrag volgen.</p>
+  <h2 data-i18n="s7.h">7. Cookies and tracking</h2>
+  <p data-i18n="s7.p">runyo uses no tracking cookies, no advertising networks, and no third-party analytics services that follow your behavior.</p>
 
-  <h2>8. Wijzigingen</h2>
-  <p>Als we dit beleid wijzigen, updaten we de datum bovenaan deze pagina. Bij ingrijpende wijzigingen informeren we je per e-mail.</p>
+  <h2 data-i18n="s8.h">8. Changes</h2>
+  <p data-i18n="s8.p">If we change this policy, we update the date at the top of this page. For significant changes, we will notify you by email.</p>
 </main>
 
 <footer>
   <span>runyo. utrecht. 2026</span>
-  <a href="/">← terug naar runyo</a>
+  <a href="/" data-i18n="back">← back to runyo</a>
 </footer>
+
+<script>
+  const translations = {
+    nl: {
+      'meta.title': 'Privacybeleid - runyo',
+      'label': 'Juridisch',
+      'h1': 'Privacybeleid',
+      'updated': 'Laatst bijgewerkt: mei 2026',
+      'intro': 'runyo respecteert jouw privacy. Dit privacybeleid legt uit welke gegevens we verzamelen, waarom, en hoe we ermee omgaan. We houden het kort en duidelijk.',
+      's1.h': '1. Wie zijn wij',
+      's1.p': 'runyo is een persoonlijke trainingsapp voor hardlopers, ontwikkeld vanuit Utrecht, Nederland. Vragen over dit beleid? Stuur een mail naar <a href="mailto:info@runyo.app">info@runyo.app</a>.',
+      's2.h': '2. Welke gegevens verzamelen we',
+      's2.p': 'We verzamelen alleen wat nodig is om de app te laten werken:',
+      's2.li1': '<strong>E-mailadres</strong> - via de waitlist, zodat we je kunnen informeren als runyo live gaat.',
+      's2.li2': '<strong>Google-accountgegevens</strong> - naam en e-mailadres via Google OAuth, zodat je kunt inloggen in de app. We slaan geen wachtwoorden op.',
+      's2.li3': '<strong>Google Sheets data</strong> - jouw trainingsschema, dat je zelf koppelt. We lezen dit alleen om de app te laten werken en slaan het niet op onze servers op.',
+      's2.li4': '<strong>Notificatie-instellingen</strong> - tijden en voorkeuren voor Telegram-notificaties, zodat de bot weet wanneer hij je een bericht stuurt.',
+      's3.h': '3. Waarvoor gebruiken we jouw gegevens',
+      's3.li1': 'Om je te informeren als runyo publiek beschikbaar is (waitlist).',
+      's3.li2': 'Om je toegang te geven tot de app via Google OAuth.',
+      's3.li3': 'Om dagelijkse trainingsnotificaties via Telegram te sturen, als je dat instelt.',
+      's3.li4': 'We verkopen geen data aan derden. We gebruiken jouw gegevens niet voor advertenties.',
+      's4.h': '4. Hoe lang bewaren we jouw gegevens',
+      's4.li1': '<strong>Waitlist e-mailadressen</strong> worden bewaard totdat runyo live gaat en we iedereen hebben geïnformeerd, of zodra je je uitschrijft.',
+      's4.li2': '<strong>App-instellingen</strong> worden bewaard zolang je een account hebt. Je kunt op elk moment je gegevens verwijderen door contact op te nemen via <a href="mailto:info@runyo.app">info@runyo.app</a>.',
+      's5.h': '5. Scopes die we via Google OAuth gebruiken',
+      's5.p1': 'Bij het inloggen met Google vragen we toegang tot:',
+      's5.li1': '<strong>Basisprofielgegevens</strong> (naam, e-mailadres) - voor identificatie.',
+      's5.li2': '<strong>Google Spreadsheets</strong> - om jouw trainingsschema te lezen en bij te werken.',
+      's5.p2': 'We vragen nooit meer toegang dan nodig is voor de werking van de app.',
+      's6.h': '6. Jouw rechten (AVG)',
+      's6.p1': 'Je hebt het recht om:',
+      's6.li1': 'Inzage te vragen in de gegevens die we over je bewaren.',
+      's6.li2': 'Onjuiste gegevens te laten corrigeren.',
+      's6.li3': 'Jouw gegevens te laten verwijderen.',
+      's6.li4': 'Bezwaar te maken tegen verwerking.',
+      's6.p2': 'Stuur een mail naar <a href="mailto:info@runyo.app">info@runyo.app</a> en we reageren binnen 30 dagen.',
+      's7.h': '7. Cookies en tracking',
+      's7.p': 'runyo gebruikt geen tracking cookies, geen advertentienetwerken en geen analysediensten van derden die jouw gedrag volgen.',
+      's8.h': '8. Wijzigingen',
+      's8.p': 'Als we dit beleid wijzigen, updaten we de datum bovenaan deze pagina. Bij ingrijpende wijzigingen informeren we je per e-mail.',
+      'back': '← terug naar runyo'
+    },
+    en: {
+      'meta.title': 'Privacy Policy - runyo',
+      'label': 'Legal',
+      'h1': 'Privacy Policy',
+      'updated': 'Last updated: May 2026',
+      'intro': 'runyo respects your privacy. This privacy policy explains what data we collect, why, and how we handle it. We keep it short and clear.',
+      's1.h': '1. Who we are',
+      's1.p': 'runyo is a personal training app for runners, built in Utrecht, the Netherlands. Questions about this policy? Email us at <a href="mailto:info@runyo.app">info@runyo.app</a>.',
+      's2.h': '2. What data we collect',
+      's2.p': 'We only collect what is needed to make the app work:',
+      's2.li1': '<strong>Email address</strong> - via the waitlist, so we can let you know when runyo goes live.',
+      's2.li2': '<strong>Google account details</strong> - name and email address via Google OAuth, so you can sign in to the app. We do not store passwords.',
+      's2.li3': '<strong>Google Sheets data</strong> - your training plan, which you connect yourself. We only read it to make the app work and do not store it on our servers.',
+      's2.li4': '<strong>Notification settings</strong> - times and preferences for Telegram notifications, so the bot knows when to send you a message.',
+      's3.h': '3. What we use your data for',
+      's3.li1': 'To let you know when runyo is publicly available (waitlist).',
+      's3.li2': 'To give you access to the app via Google OAuth.',
+      's3.li3': 'To send daily training notifications via Telegram, if you set that up.',
+      's3.li4': 'We do not sell data to third parties. We do not use your data for advertising.',
+      's4.h': '4. How long we keep your data',
+      's4.li1': '<strong>Waitlist email addresses</strong> are kept until runyo goes live and we have informed everyone, or as soon as you unsubscribe.',
+      's4.li2': '<strong>App settings</strong> are kept as long as you have an account. You can delete your data at any time by contacting us at <a href="mailto:info@runyo.app">info@runyo.app</a>.',
+      's5.h': '5. Scopes we use via Google OAuth',
+      's5.p1': 'When you sign in with Google, we request access to:',
+      's5.li1': '<strong>Basic profile details</strong> (name, email address) - for identification.',
+      's5.li2': '<strong>Google Spreadsheets</strong> - to read and update your training plan.',
+      's5.p2': 'We never request more access than is needed for the app to work.',
+      's6.h': '6. Your rights (GDPR)',
+      's6.p1': 'You have the right to:',
+      's6.li1': 'Request access to the data we keep about you.',
+      's6.li2': 'Have incorrect data corrected.',
+      's6.li3': 'Have your data deleted.',
+      's6.li4': 'Object to processing.',
+      's6.p2': 'Email us at <a href="mailto:info@runyo.app">info@runyo.app</a> and we will respond within 30 days.',
+      's7.h': '7. Cookies and tracking',
+      's7.p': 'runyo uses no tracking cookies, no advertising networks, and no third-party analytics services that follow your behavior.',
+      's8.h': '8. Changes',
+      's8.p': 'If we change this policy, we update the date at the top of this page. For significant changes, we will notify you by email.',
+      'back': '← back to runyo'
+    },
+    es: {
+      'meta.title': 'Política de privacidad - runyo',
+      'label': 'Legal',
+      'h1': 'Política de privacidad',
+      'updated': 'Última actualización: mayo de 2026',
+      'intro': 'runyo respeta tu privacidad. Esta política de privacidad explica qué datos recopilamos, por qué y cómo los tratamos. Lo mantenemos breve y claro.',
+      's1.h': '1. Quiénes somos',
+      's1.p': 'runyo es una app de entrenamiento personal para corredores, desarrollada en Utrecht, Países Bajos. ¿Preguntas sobre esta política? Escríbenos a <a href="mailto:info@runyo.app">info@runyo.app</a>.',
+      's2.h': '2. Qué datos recopilamos',
+      's2.p': 'Solo recopilamos lo necesario para que la app funcione:',
+      's2.li1': '<strong>Dirección de correo</strong> - a través de la lista de espera, para avisarte cuando runyo se lance.',
+      's2.li2': '<strong>Datos de la cuenta de Google</strong> - nombre y correo a través de Google OAuth, para que puedas iniciar sesión en la app. No almacenamos contraseñas.',
+      's2.li3': '<strong>Datos de Google Sheets</strong> - tu plan de entrenamiento, que tú mismo conectas. Solo lo leemos para que la app funcione y no lo almacenamos en nuestros servidores.',
+      's2.li4': '<strong>Ajustes de notificaciones</strong> - horarios y preferencias para las notificaciones de Telegram, para que el bot sepa cuándo enviarte un mensaje.',
+      's3.h': '3. Para qué usamos tus datos',
+      's3.li1': 'Para avisarte cuando runyo esté disponible públicamente (lista de espera).',
+      's3.li2': 'Para darte acceso a la app mediante Google OAuth.',
+      's3.li3': 'Para enviarte notificaciones diarias de entrenamiento por Telegram, si así lo configuras.',
+      's3.li4': 'No vendemos datos a terceros. No usamos tus datos para publicidad.',
+      's4.h': '4. Cuánto tiempo conservamos tus datos',
+      's4.li1': '<strong>Las direcciones de correo de la lista de espera</strong> se conservan hasta que runyo se lance y hayamos informado a todos, o tan pronto como te des de baja.',
+      's4.li2': '<strong>Los ajustes de la app</strong> se conservan mientras tengas una cuenta. Puedes eliminar tus datos en cualquier momento escribiéndonos a <a href="mailto:info@runyo.app">info@runyo.app</a>.',
+      's5.h': '5. Permisos que usamos mediante Google OAuth',
+      's5.p1': 'Cuando inicias sesión con Google, solicitamos acceso a:',
+      's5.li1': '<strong>Datos básicos del perfil</strong> (nombre, correo) - para la identificación.',
+      's5.li2': '<strong>Google Spreadsheets</strong> - para leer y actualizar tu plan de entrenamiento.',
+      's5.p2': 'Nunca solicitamos más acceso del necesario para que la app funcione.',
+      's6.h': '6. Tus derechos (RGPD)',
+      's6.p1': 'Tienes derecho a:',
+      's6.li1': 'Solicitar acceso a los datos que conservamos sobre ti.',
+      's6.li2': 'Corregir datos incorrectos.',
+      's6.li3': 'Eliminar tus datos.',
+      's6.li4': 'Oponerte al tratamiento.',
+      's6.p2': 'Escríbenos a <a href="mailto:info@runyo.app">info@runyo.app</a> y te responderemos en un plazo de 30 días.',
+      's7.h': '7. Cookies y seguimiento',
+      's7.p': 'runyo no usa cookies de seguimiento, ni redes de publicidad, ni servicios de analítica de terceros que rastreen tu comportamiento.',
+      's8.h': '8. Cambios',
+      's8.p': 'Si cambiamos esta política, actualizamos la fecha en la parte superior de esta página. Ante cambios importantes, te avisaremos por correo.',
+      'back': '← volver a runyo'
+    }
+  };
+
+  const SUPPORTED = ['nl', 'en', 'es'];
+  const DEFAULT_LANG = 'nl';
+
+  function applyLang(lang) {
+    const dict = translations[lang];
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    localStorage.setItem('runyo-lang', lang);
+  }
+
+  function initLang() {
+    const stored = localStorage.getItem('runyo-lang');
+    if (stored && SUPPORTED.includes(stored)) return stored;
+    const browser = (navigator.language || '').slice(0, 2).toLowerCase();
+    if (browser === 'es' || browser === 'en') return browser;
+    return DEFAULT_LANG;
+  }
+
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  applyLang(initLang());
+</script>
 
 </body>
 </html>

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>runyo — jouw schema. eindelijk levend.</title>
-  <meta name="description" content="Importeer jouw hardloopschema en breng het tot leven!">
-  <meta property="og:title" content="runyo — schema's die meelopen">
-  <meta property="og:description" content="Excel, pdf, foto, of van je coach. Maakt niet uit. De wachtlijst voor het startschot is geopend.">
+  <title data-i18n="meta.title">runyo - jouw schema. eindelijk levend.</title>
+  <meta name="description" data-i18n-content="meta.description" content="Import your running plan and bring it to life!">
+  <meta property="og:title" data-i18n-content="meta.ogTitle" content="runyo - plans that run with you">
+  <meta property="og:description" data-i18n-content="meta.ogDescription" content="Excel, pdf, photo, or from your coach. Doesn't matter. The waitlist for the starting gun is open.">
   <meta property="og:image" content="https://runyo.app/og-image.svg">
   <meta property="og:url" content="https://runyo.app">
   <meta property="og:type" content="website">
@@ -71,6 +71,43 @@
       border: none;
       cursor: pointer;
       font-family: var(--sw);
+    }
+
+    /* ── LANG SWITCH ── */
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px;
+    }
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 22px;
+      border: none;
+      background: transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      padding: 0;
+      opacity: 0.45;
+      transition: opacity 0.12s, background 0.12s;
+    }
+    .lang-btn:hover { opacity: 0.8; }
+    .lang-btn.active {
+      opacity: 1;
+      background: var(--paper);
+      box-shadow: 0 1px 3px rgba(14,31,26,0.12);
+    }
+    .lang-btn svg {
+      width: 20px;
+      height: 14px;
+      border-radius: 2px;
+      display: block;
     }
 
     /* ── WORDMARK ── */
@@ -206,7 +243,7 @@
       letter-spacing: -0.01em;
     }
 
-    /* ── HOE HET WERKT ── */
+    /* ── HOW IT WORKS ── */
     .how-section {
       padding: 0 60px 60px;
     }
@@ -420,7 +457,6 @@
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav { padding: 24px 28px; }
-      .nav-right { display: none; }
 
       /* reorder: hero-left → how-section → signup card */
       main { display: flex; flex-direction: column; }
@@ -469,35 +505,64 @@
 
 <nav>
   <div class="logo">runyo</div>
+  <div class="nav-right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="nl" aria-label="Nederlands" title="Nederlands">
+        <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="30" fill="#21468B"/>
+          <rect width="60" height="20" fill="#fff"/>
+          <rect width="60" height="10" fill="#AE1C28"/>
+        </svg>
+      </button>
+      <button class="lang-btn" data-lang="en" aria-label="English" title="English">
+        <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+          <clipPath id="gb-clip"><rect width="60" height="30"/></clipPath>
+          <g clip-path="url(#gb-clip)">
+            <rect width="60" height="30" fill="#012169"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4" clip-path="url(#gb-clip)"/>
+            <path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/>
+            <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/>
+          </g>
+        </svg>
+      </button>
+      <button class="lang-btn" data-lang="es" aria-label="Español" title="Español">
+        <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="30" fill="#AA151B"/>
+          <rect width="60" height="15" y="7.5" fill="#F1BF00"/>
+        </svg>
+      </button>
+    </div>
+  </div>
 </nav>
 
 <main>
   <section class="hero">
     <div class="hero-left">
-      <div class="waitlist-tag">Waitlist open</div>
+      <div class="waitlist-tag" data-i18n="hero.tag">Waitlist open</div>
       <div class="wordmark">
         <div class="wordmark-text">runyo</div>
         <div class="wordmark-bar">
           <div class="wordmark-bar-fill"></div>
         </div>
       </div>
-      <div class="hero-sub">Schema's die meelopen.</div>
+      <div class="hero-sub" data-i18n="hero.sub">Plans that run with you.</div>
     </div>
 
     <div class="hero-right">
       <div class="signup-card">
-        <div class="signup-heading">Ren als eerste weg met runyo.</div>
-        <div class="signup-body">
-          Jij staat op rij één als het startschot klinkt.
+        <div class="signup-heading" data-i18n="signup.heading">Be first off the line with runyo.</div>
+        <div class="signup-body" data-i18n="signup.body">
+          You're in pole position when the starting gun goes off.
         </div>
         <form id="waitlistForm">
           <div class="form-pill">
-            <input type="email" inputmode="email" name="email" placeholder="naam@email.com" required autocomplete="email">
-            <button type="submit">Zet me op de lijst</button>
+            <input type="email" inputmode="email" name="email" data-i18n-placeholder="signup.placeholder" placeholder="name@email.com" required autocomplete="email">
+            <button type="submit" data-i18n="signup.button">Put me on the list</button>
           </div>
         </form>
-        <div class="success-msg" id="successMsg">✓ &nbsp;Nice, je staat op de lijst! We zullen je op de hoogte houden.</div>
-        <div class="error-msg" id="errorMsg">Er ging iets mis. Probeer het opnieuw.</div>
+        <div class="success-msg" id="successMsg" data-i18n="signup.success">✓ &nbsp;Nice, you're on the list! We'll keep you posted.</div>
+        <div class="error-msg" id="errorMsg" data-i18n="signup.error">Something went wrong. Please try again.</div>
         <div class="signup-note"></div>
       </div>
     </div>
@@ -505,17 +570,17 @@
 
   <section class="how-section">
     <div class="section-divider">
-      <div class="section-label">HOE HET WERKT</div>
+      <div class="section-label" data-i18n="how.label">HOW IT WORKS</div>
       <div class="section-line"></div>
     </div>
 
     <div class="step-cards">
 
-      <!-- 1. Jij hebt -->
+      <!-- 1. You have -->
       <div class="step-card paper">
-        <div class="step-label">Stap 1:</div>
-        <div class="step-title">Jij hebt een hardloopschema</div>
-        <div class="step-desc">Excel, pdf, foto, of van je coach. Maakt niet uit.</div>
+        <div class="step-label" data-i18n="step1.label">Step 1:</div>
+        <div class="step-title" data-i18n="step1.title">You have a running plan</div>
+        <div class="step-desc" data-i18n="step1.desc">Excel, pdf, photo, or from your coach. Doesn't matter.</div>
         <div class="schema-lines">
           <div class="schema-line"><div class="schema-line-a"></div><div class="schema-line-b"></div><div class="schema-line-c"></div></div>
           <div class="schema-line"><div class="schema-line-a"></div><div class="schema-line-b"></div><div class="schema-line-c"></div></div>
@@ -535,9 +600,9 @@
       <!-- 2. runyo -->
       <div class="step-card surface">
         <div>
-          <div class="step-label">Stap 2:</div>
-          <div class="step-title"> runyo leest, herkent & zet klaar</div>
-          <div class="step-desc">Geen handwerk. We begrijpen jouw schema zoals jij het bedoelt.</div>
+          <div class="step-label" data-i18n="step2.label">Step 2:</div>
+          <div class="step-title" data-i18n="step2.title">runyo reads, recognizes & sets it up</div>
+          <div class="step-desc" data-i18n="step2.desc">No manual work. We understand your plan exactly the way you mean it.</div>
         </div>
         <div class="week-bars">
           <div class="week-bar" style="background:#3DDFB1"></div><!-- easy -->
@@ -557,22 +622,22 @@
         </svg>
       </div>
 
-      <!-- 3. Jij krijgt -->
+      <!-- 3. You get -->
       <div class="step-card paper">
-        <div class="step-label">Stap 3:</div>
-        <div class="step-title">Jouw schema, elke dag helder.</div>
-        <div class="step-desc">Eén klik, en je schema schuift mee met je dag.</div>
+        <div class="step-label" data-i18n="step3.label">Step 3:</div>
+        <div class="step-title" data-i18n="step3.title">Your plan, clear every day.</div>
+        <div class="step-desc" data-i18n="step3.desc">One tap, and your plan moves along with your day.</div>
         <div class="step-spacer"></div>
         <div class="today-card">
-          <div class="today-label">VANDAAG</div>
-          <div class="today-val">Easy run, 12,0 km</div>
+          <div class="today-label" data-i18n="today.label">TODAY</div>
+          <div class="today-val" data-i18n="today.val">Easy run, 12.0 km</div>
         </div>
         <div class="progress-bar">
           <div class="progress-bar-fill"></div>
         </div>
         <div class="progress-meta">
-          <span>WK 4 / 12</span>
-          <span>UTRECHT, 31 MEI</span>
+          <span data-i18n="progress.week">WK 4 / 12</span>
+          <span data-i18n="progress.race">UTRECHT, MAY 31</span>
         </div>
       </div>
 
@@ -581,15 +646,15 @@
 
   <section class="bridge-section">
     <div class="section-divider">
-      <div class="section-label">STRAKS OOK</div>
+      <div class="section-label" data-i18n="bridge.label">COMING TOO</div>
       <div class="section-line"></div>
     </div>
     <div class="bridge-card">
-      <div class="bridge-tease">schema <span class="arrow">→</span> horloge</div>
-      <div class="bridge-body">
-        Activiteiten rechtsstreeks op je horloge zetten. Eén training, een blok, of je complete schema.
+      <div class="bridge-tease"><span data-i18n="bridge.tease.a">plan</span> <span class="arrow">→</span> <span data-i18n="bridge.tease.b">watch</span></div>
+      <div class="bridge-body" data-i18n="bridge.body">
+        Send activities straight to your watch. One workout, a block, or your entire plan.
       </div>
-      <div class="bridge-badge">binnenkort</div>
+      <div class="bridge-badge" data-i18n="bridge.badge">coming soon</div>
       <div class="bridge-brands">
         <span class="brand-chip">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -644,11 +709,160 @@
         </svg>
       </a>
     </div>
-    <a href="/privacy" style="color:var(--mute);text-decoration:none;font-size:10px;font-family:var(--mw)">privacybeleid</a>
+    <a href="/privacy" data-i18n="footer.privacy" style="color:var(--mute);text-decoration:none;font-size:10px;font-family:var(--mw)">privacy policy</a>
   </div>
 </footer>
 
 <script>
+  const translations = {
+    nl: {
+      'meta.title': 'runyo - jouw schema. eindelijk levend.',
+      'meta.description': 'Importeer jouw hardloopschema en breng het tot leven!',
+      'meta.ogTitle': "runyo - schema's die meelopen",
+      'meta.ogDescription': 'Excel, pdf, foto, of van je coach. Maakt niet uit. De wachtlijst voor het startschot is geopend.',
+      'hero.tag': 'Waitlist open',
+      'hero.sub': "Schema's die meelopen.",
+      'signup.heading': 'Ren als eerste weg met runyo.',
+      'signup.body': 'Jij staat op rij één als het startschot klinkt.',
+      'signup.placeholder': 'naam@email.com',
+      'signup.button': 'Zet me op de lijst',
+      'signup.busy': 'bezig...',
+      'signup.success': '✓ &nbsp;Nice, je staat op de lijst! We zullen je op de hoogte houden.',
+      'signup.error': 'Er ging iets mis. Probeer het opnieuw.',
+      'how.label': 'HOE HET WERKT',
+      'step1.label': 'Stap 1:',
+      'step1.title': 'Jij hebt een hardloopschema',
+      'step1.desc': 'Excel, pdf, foto, of van je coach. Maakt niet uit.',
+      'step2.label': 'Stap 2:',
+      'step2.title': 'runyo leest, herkent & zet klaar',
+      'step2.desc': 'Geen handwerk. We begrijpen jouw schema zoals jij het bedoelt.',
+      'step3.label': 'Stap 3:',
+      'step3.title': 'Jouw schema, elke dag helder.',
+      'step3.desc': 'Eén klik, en je schema schuift mee met je dag.',
+      'today.label': 'VANDAAG',
+      'today.val': 'Easy run, 12,0 km',
+      'progress.week': 'WK 4 / 12',
+      'progress.race': 'UTRECHT, 31 MEI',
+      'bridge.label': 'STRAKS OOK',
+      'bridge.tease.a': 'schema',
+      'bridge.tease.b': 'horloge',
+      'bridge.body': 'Activiteiten rechtstreeks op je horloge zetten. Eén training, een blok, of je complete schema.',
+      'bridge.badge': 'binnenkort',
+      'footer.privacy': 'privacybeleid'
+    },
+    en: {
+      'meta.title': 'runyo - your plan. finally alive.',
+      'meta.description': 'Import your running plan and bring it to life!',
+      'meta.ogTitle': 'runyo - plans that run with you',
+      'meta.ogDescription': "Excel, pdf, photo, or from your coach. Doesn't matter. The waitlist for the starting gun is open.",
+      'hero.tag': 'Waitlist open',
+      'hero.sub': 'Plans that run with you.',
+      'signup.heading': 'Be first off the line with runyo.',
+      'signup.body': "You're in pole position when the starting gun goes off.",
+      'signup.placeholder': 'name@email.com',
+      'signup.button': 'Put me on the list',
+      'signup.busy': 'sending...',
+      'signup.success': "✓ &nbsp;Nice, you're on the list! We'll keep you posted.",
+      'signup.error': 'Something went wrong. Please try again.',
+      'how.label': 'HOW IT WORKS',
+      'step1.label': 'Step 1:',
+      'step1.title': 'You have a running plan',
+      'step1.desc': "Excel, pdf, photo, or from your coach. Doesn't matter.",
+      'step2.label': 'Step 2:',
+      'step2.title': 'runyo reads, recognizes & sets it up',
+      'step2.desc': 'No manual work. We understand your plan exactly the way you mean it.',
+      'step3.label': 'Step 3:',
+      'step3.title': 'Your plan, clear every day.',
+      'step3.desc': 'One tap, and your plan moves along with your day.',
+      'today.label': 'TODAY',
+      'today.val': 'Easy run, 12.0 km',
+      'progress.week': 'WK 4 / 12',
+      'progress.race': 'UTRECHT, MAY 31',
+      'bridge.label': 'COMING TOO',
+      'bridge.tease.a': 'plan',
+      'bridge.tease.b': 'watch',
+      'bridge.body': 'Send activities straight to your watch. One workout, a block, or your entire plan.',
+      'bridge.badge': 'coming soon',
+      'footer.privacy': 'privacy policy'
+    },
+    es: {
+      'meta.title': 'runyo - tu plan. por fin, vivo.',
+      'meta.description': '¡Importa tu plan de entrenamiento y dale vida!',
+      'meta.ogTitle': 'runyo - planes que corren contigo',
+      'meta.ogDescription': 'Excel, pdf, foto o de tu entrenador. Da igual. La lista de espera para el pistoletazo de salida ya está abierta.',
+      'hero.tag': 'Lista de espera abierta',
+      'hero.sub': 'Planes que corren contigo.',
+      'signup.heading': 'Sé el primero en salir con runyo.',
+      'signup.body': 'Tú estás en primera fila cuando suene el pistoletazo de salida.',
+      'signup.placeholder': 'nombre@email.com',
+      'signup.button': 'Apúntame a la lista',
+      'signup.busy': 'enviando...',
+      'signup.success': '✓ &nbsp;¡Genial, estás en la lista! Te mantendremos al tanto.',
+      'signup.error': 'Algo salió mal. Inténtalo de nuevo.',
+      'how.label': 'CÓMO FUNCIONA',
+      'step1.label': 'Paso 1:',
+      'step1.title': 'Tienes un plan de entrenamiento',
+      'step1.desc': 'Excel, pdf, foto o de tu entrenador. Da igual.',
+      'step2.label': 'Paso 2:',
+      'step2.title': 'runyo lo lee, lo reconoce y lo deja listo',
+      'step2.desc': 'Sin trabajo manual. Entendemos tu plan tal y como lo quieres.',
+      'step3.label': 'Paso 3:',
+      'step3.title': 'Tu plan, claro cada día.',
+      'step3.desc': 'Un toque, y tu plan se ajusta a tu día.',
+      'today.label': 'HOY',
+      'today.val': 'Rodaje suave, 12,0 km',
+      'progress.week': 'SEM 4 / 12',
+      'progress.race': 'UTRECHT, 31 MAY',
+      'bridge.label': 'PRÓXIMAMENTE',
+      'bridge.tease.a': 'plan',
+      'bridge.tease.b': 'reloj',
+      'bridge.body': 'Envía las actividades directamente a tu reloj. Un entrenamiento, un bloque o tu plan completo.',
+      'bridge.badge': 'muy pronto',
+      'footer.privacy': 'política de privacidad'
+    }
+  };
+
+  const SUPPORTED = ['nl', 'en', 'es'];
+  const DEFAULT_LANG = 'nl';
+
+  function applyLang(lang) {
+    const dict = translations[lang];
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-content]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-content');
+      if (dict[key] !== undefined) el.setAttribute('content', dict[key]);
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+    });
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    localStorage.setItem('runyo-lang', lang);
+  }
+
+  function initLang() {
+    const stored = localStorage.getItem('runyo-lang');
+    if (stored && SUPPORTED.includes(stored)) return stored;
+    const browser = (navigator.language || '').slice(0, 2).toLowerCase();
+    if (browser === 'es' || browser === 'en') return browser;
+    return DEFAULT_LANG;
+  }
+
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  applyLang(initLang());
+
   const form = document.getElementById('waitlistForm');
   const successMsg = document.getElementById('successMsg');
   const errorMsg = document.getElementById('errorMsg');
@@ -657,8 +871,10 @@
     e.preventDefault();
     const btn = form.querySelector('button');
     const email = form.querySelector('input[name="email"]').value;
+    const lang = document.documentElement.lang;
+    const dict = translations[lang] || translations.en;
     btn.disabled = true;
-    btn.textContent = 'bezig...';
+    btn.textContent = dict['signup.busy'];
     errorMsg.style.display = 'none';
     try {
       const res = await fetch('https://formspree.io/f/xaqvjzna', {
@@ -673,7 +889,7 @@
       } else { throw new Error(); }
     } catch {
       btn.disabled = false;
-      btn.textContent = 'Zet me op de lijst';
+      btn.textContent = dict['signup.button'];
       errorMsg.style.display = 'block';
     }
   });
