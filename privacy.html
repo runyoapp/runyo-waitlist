@@ -268,7 +268,9 @@
   };
 
   const SUPPORTED = ['nl', 'en', 'es'];
-  const DEFAULT_LANG = 'en';
+  const DEFAULT_LANG = 'nl';
+  // zelfde localStorage-key als index.html zodat de taalkeuze meereist
+  const LANG_KEY = 'runyo_lang';
 
   function applyLang(lang) {
     const dict = translations[lang];
@@ -283,11 +285,11 @@
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
 
-    localStorage.setItem('runyo-lang', lang);
+    localStorage.setItem(LANG_KEY, lang);
   }
 
   function initLang() {
-    const stored = localStorage.getItem('runyo-lang');
+    const stored = localStorage.getItem(LANG_KEY);
     if (stored && SUPPORTED.includes(stored)) return stored;
     const browser = (navigator.language || '').slice(0, 2).toLowerCase();
     if (SUPPORTED.includes(browser)) return browser;
