@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8" />
-<title>runyo - schema's die meelopen</title>
+<title data-i18n="metaTitle">runyo - schema's die meelopen</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
 <meta name="description" content="Importeer je trainingsschema en breng het tot leven. Excel, pdf, foto of van je coach - runyo leest het en zet het klaar." />
 <meta property="og:title" content="runyo - schema's die meelopen" />
@@ -386,6 +386,8 @@
 <script>
   var I18N = {
     nl: {
+      metaTitle:"runyo - schema's die meelopen",
+      metaDesc:"Importeer je trainingsschema en breng het tot leven. Excel, pdf, foto of van je coach - runyo leest het en zet het klaar.",
       pill:"Wachtlijst open",
       kicker:"Schema's die meelopen.",
       title:"Je hebt al een schema. <span class=\"accent\">runyo</span> brengt het tot leven.",
@@ -408,6 +410,8 @@
       priv:"privacybeleid"
     },
     en: {
+      metaTitle:"runyo - a plan with legs",
+      metaDesc:"Import your training plan and bring it to life. Excel, pdf, photo, or from your coach - runyo reads it and sets it up.",
       pill:"Waitlist open",
       kicker:"A plan with legs.",
       title:"You already have a plan. <span class=\"accent\">runyo</span> brings it to life.",
@@ -430,6 +434,8 @@
       priv:"privacy policy"
     },
     es: {
+      metaTitle:"runyo - corre, que el plan te sigue",
+      metaDesc:"Importa tu plan de entrenamiento y dale vida. Excel, pdf, foto o de tu entrenador - runyo lo lee y lo deja listo.",
       pill:"Lista de espera abierta",
       kicker:"Corre, que el plan te sigue.",
       title:"Ya tienes un plan. <span class=\"accent\">runyo</span> le da vida.",
@@ -470,6 +476,8 @@
       if(d[k] != null) el.innerHTML = d[k];
     });
     email.setAttribute('placeholder', d.placeholder);
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc && d.metaDesc != null) metaDesc.setAttribute('content', d.metaDesc);
     document.querySelectorAll('.lang button').forEach(function(b){
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
